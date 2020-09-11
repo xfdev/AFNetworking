@@ -256,6 +256,21 @@ id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingOptions 
 
     if (!responseObject)
     {
+        // FR开始
+        // 解析3840非json，并且underInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];数据为空的情况
+        // 如果 serializationError 错误的底层错误为空，就把data作为 AFDataErrorKey 设置。
+        // NSString *errorText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        // https://blog.csdn.net/weixin_40287666/article/details/81129824
+        if (!serializationError.userInfo[NSUnderlyingErrorKey] && !(*error).userInfo) {
+            
+            NSMutableDictionary *mutableUserInfo = [serializationError.userInfo mutableCopy];
+            
+            NSDictionary *dic = @{AFNetworkingOperationFailingURLResponseDataErrorKey: data};
+            
+            mutableUserInfo[NSUnderlyingErrorKey] = [[NSError alloc] initWithDomain:serializationError.domain code:serializationError.code userInfo:dic];
+            serializationError = [[NSError alloc] initWithDomain:serializationError.domain code:serializationError.code userInfo:mutableUserInfo];
+        }
+        // FR 结束
         if (error) {
             *error = AFErrorWithUnderlyingError(serializationError, *error);
         }
