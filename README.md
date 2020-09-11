@@ -25,7 +25,21 @@ Perhaps the most important feature of all, however, is the amazing community of 
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 
+
+
+## 仓库合并
+
+### 合并原仓库的 Pull requests
+
+1. 点击`Compare`进入代码比较，切换左右仓库，使原仓库指向自己Fork的仓库。（这里还不能直接切换，需要点击一个第三方的repository来切换，目前不知道其他快捷方法）
+2. 下一步、下一步、下一步，完成。
+
+### 合并提交到原仓库的 Pull requests
+
+一般不需要这么操作，由原仓库管理人员去检查代码逻辑，然后合并到原仓库。但由于 YYKit 仓库目前不再维护，提交的 Pull requests 也无法处理，所以要 Fork 后自己处理。
+
 ## Installation
+
 AFNetworking supports multiple methods for installing the library in a project.
 
 ## Installation with CocoaPods
