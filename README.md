@@ -27,6 +27,10 @@ Perhaps the most important feature of all, however, is the amazing community of 
 
 
 
+## 使用
+pod 'AFNetworking', '~> 4.0'          # 网络请求
+pod 'AFNetworking', :git => 'https://github.com/xfdev/AFNetworking.git'
+
 ## 仓库合并
 
 ### 合并原仓库的 Pull requests
@@ -233,7 +237,7 @@ NSDictionary *parameters = @{@"foo": @"bar", @"baz": @[@1, @2, @3]};
 
     POST http://example.com/
     Content-Type: application/x-www-form-urlencoded
-
+    
     foo=bar&baz[]=1&baz[]=2&baz[]=3
 
 #### JSON Parameter Encoding
@@ -244,7 +248,7 @@ NSDictionary *parameters = @{@"foo": @"bar", @"baz": @[@1, @2, @3]};
 
     POST http://example.com/
     Content-Type: application/json
-
+    
     {"foo": "bar", "baz": [1,2,3]}
 
 ---
